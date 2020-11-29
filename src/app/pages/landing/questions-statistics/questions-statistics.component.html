@@ -1,0 +1,19 @@
+<div id="header" class="glow-text">QUESTION BOARD</div>
+<div class="questions-stat-content">
+    <table class="glow-text">
+        <col id="question-col"/>
+        <col id="total-col"/>
+        <col id="rightPer-col"/>
+        <col id="wrongPer-col"/>
+        <th class="question-data">QUESTIONS:</th>
+        <th class="total-answered-data">ANSWERED</th>
+        <th class="right-percentage-data">V-RIGHT</th>
+        <th class="wrong-percentage-data">X-WRONG</th>
+        <tr *ngFor="let question of objectKeys(questionsStatistics);let i = index">
+            <td class="question-data">{{'Q' + (i+1) + '. ' + question}}</td>
+            <td class="total-answered-data">{{questionsStatistics[question].totalAnswered}}</td>
+            <td class="right-percentage-data">{{questionsStatistics[question].rightPercentage}}%</td>
+            <td class="wrong-percentage-data">{{questionsStatistics[question].wrongPercentage}}%</td>
+        </tr>
+    </table>
+</div>

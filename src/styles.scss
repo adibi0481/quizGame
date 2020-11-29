@@ -1,0 +1,12 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: fantasy, "Helvetica Neue", sans-serif; }
+.mat-dialog-container{
+    background: #070707;
+    opacity: 0.8;
+}
+
+.glow-text{
+    text-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
+}

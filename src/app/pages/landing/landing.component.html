@@ -1,0 +1,11 @@
+<div class="landing-container">
+    <button [routerLink]="['play']" mat-flat-button id="start-game-btn">Start Game</button>
+    <mat-tab-group>
+        <mat-tab label="Leaderboard">
+            <app-leaderboard></app-leaderboard>
+        </mat-tab>
+        <mat-tab label="Question Board">
+            <app-questions-statistics></app-questions-statistics>
+        </mat-tab>
+    </mat-tab-group>
+</div>

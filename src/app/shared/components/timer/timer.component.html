@@ -1,0 +1,11 @@
+<div class="timer-container">
+    <label>Time:
+        <label class="timer" [ngStyle]="{'color': timer > 0 ? '#61B3BB' : '#DD1010'}" class="timer">
+            <img *ngIf="timer > 0; else warningTimer" src="assets/hourglass.png">
+            <ng-template #warningTimer>
+                <img src="assets/redHourglass.png">
+            </ng-template>
+            {{timer}} SECONDS
+        </label>
+    </label>
+</div>

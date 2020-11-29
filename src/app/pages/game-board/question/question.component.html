@@ -1,0 +1,21 @@
+<div style="display: -ms-inline-grid;">
+    <div class="question-header">
+        <h3 class="question-title question-number">
+            {{'Q' + questionNumber + ': '}}
+        </h3>
+            <h3 class="question-title">{{question.question}}</h3>
+    </div>
+
+<div class="grid-container">
+    <button  (click)="onAnswerClick(option)" [disabled]="isFinished" mat-button *ngFor="let option of answers" class="grid-item" 
+    [ngClass]="{'correct-answer': isCorrect(option),
+                'incorrect-answer': isIncorrect(option),
+                'selected': !isFinished && option === selectedAnswer}"
+>
+    <img class="answer-icon" *ngIf="isCorrect(option)" src="assets/correct.png">
+    <img class="answer-icon" *ngIf="isIncorrect(option)" src="assets/incorrect.png">
+    
+        {{option}}
+    </button>
+</div>
+</div>

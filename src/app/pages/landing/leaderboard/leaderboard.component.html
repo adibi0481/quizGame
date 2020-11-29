@@ -1,0 +1,12 @@
+<div class="leaderboard-content">
+<div id="header" class="glow-text">LEADER BOARD</div>
+<div class="content">
+    <table>
+        <col id="username-col"/>
+        <col id="total-score-col"/>
+        <tr *ngFor="let result of topScores$|async; let i = index"  [ngClass]="{'top-3': i < 3,'glow-text': i < 3}">
+            <td>{{ (i+1) + '. ' + result.username}}</td>
+            <td class="total-score-data">{{result.totalScore}}</td>
+        </tr>
+    </table>
+</div>

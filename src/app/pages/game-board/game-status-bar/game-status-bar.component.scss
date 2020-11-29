@@ -1,0 +1,43 @@
+.toolbar-design{
+    width: 100vw;
+    display: flex;
+    label{
+        font-size: 1.6vw;
+        color: white;
+    }
+    .tab{
+        width: 33vw;
+    }
+    background-image: linear-gradient(266deg, #1c457a  0%,#93bbc2);
+    .live-container{
+        float: right !important;     
+        margin-left: 10px;
+        margin-top: 10px;
+        img{
+            margin-right: 5px;
+        }
+        #start-game-btn{
+            font-size: 2vw;
+            margin-top: 4%;
+            margin-left: 4%;
+            padding: 15px;
+        }
+    }
+    .question-container{
+        float: right !important;     
+        text-align: center;
+    }
+    .score-container{   
+        float: right !important;     
+        text-align: right;
+        input{
+            text-align: center;
+            width: 160px;
+            box-shadow: 1px 1px #93c0c0;
+            height: 50px;
+            font-size: 1.5vw;
+            background-color: black;
+            color: #93c0c0;
+        }
+    }
+}    

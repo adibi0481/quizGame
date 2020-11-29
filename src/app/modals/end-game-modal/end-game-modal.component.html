@@ -1,0 +1,31 @@
+<div class="content-container" mat-dialog-content>
+    <div class="score-container">
+        <img src="assets/gameover.png">
+        <label *ngIf="correctAnswers === totalQuestions" class="amazing">AMAZING!!!</label>
+        <span id="top-title">YOU ANSWERED CORRECTLY ON:</span>
+        <span [ngStyle]="{'color':correctAnswers === totalQuestions ? 'green': 'white'}" id="result">
+            {{correctAnswers}} OUT OF {{totalQuestions}} QUESTIONS
+        </span>
+    </div>
+    <div class="name-section">
+        <label class="glow-text">Enter Your Name</label>
+        <div class="name-input">
+            <mat-form-field appearance="outline">
+                <input type="text" autocomplete="off" duplicateNameValidator #name="ngModel" matInput
+                    placeholder="Type Something" minlength="1" maxlength="20" required pattern="^[a-zA-Z0-9]*$"
+                    [(ngModel)]="username">
+            </mat-form-field>
+            <button [ngClass]="{'valid': name.valid}" [disabled]="!name.valid" mat-raised-button
+                (click)="onSubmitName()">SAVE</button>
+        </div>
+        <div class="error" *ngIf="name.errors?.pattern">
+            Name should contain only alpha-numeric characters
+        </div>
+        <div class="error" *ngIf="name.touched && name.errors?.required">
+            Name is required
+        </div>
+        <div class="error" *ngIf="name.errors?.duplicateName">
+            {{name.errors.duplicateName}}
+        </div>
+    </div>
+</div>
