@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { GameService } from 'src/app/services/game.service';
-import { GameResults } from 'src/app/shared/models/game-results.model';
+import { GameService } from '../../../services/game.service';
+import { GameResults } from '../../../shared/models/game-results.model';
 
 @Component({
   selector: 'app-leaderboard',

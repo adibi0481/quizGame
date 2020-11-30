@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { AppRoutingModule } from 'src/app/app-routing.module';
-import { MaterialModule } from 'src/app/material.module';
+import { AppRoutingModule } from '../../app-routing.module';
+import { MaterialModule } from '../../material.module';
 import { LandingComponent } from './landing.component';
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 import { QuestionsStatisticsComponent } from './questions-statistics/questions-statistics.component';

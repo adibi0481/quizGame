@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Question } from 'src/app/shared/models/question.model';
+import { Question } from '../../../shared/models/question.model';
 import * as _ from "lodash";
 
 @Component({

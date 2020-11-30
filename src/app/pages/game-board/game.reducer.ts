@@ -1,7 +1,7 @@
 import { createReducer, on } from '@ngrx/store';
-import { QUESTIONS } from 'src/app/services/QUESTIONS';
-import { eGameStatus } from 'src/app/shared/enums/eGameStatus';
-import { Game } from 'src/app/shared/models/game.model';
+import { QUESTIONS } from '../../services/QUESTIONS';
+import { eGameStatus } from '../../shared/enums/eGameStatus';
+import { Game } from '../../shared/models/game.model';
 import { reset, skipQuestion, submitQuestion } from './game.actions';
 
 const SCORE_PER_QUESTION = 10;

@@ -3,11 +3,11 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatStepper } from '@angular/material/stepper';
 import { Store } from '@ngrx/store';
 
-import { EndGameModalComponent } from 'src/app/modals/end-game-modal/end-game-modal.component';
-import { GameService } from 'src/app/services/game.service';
-import { TimerComponent } from 'src/app/shared/components/timer/timer.component';
-import { eGameStatus } from 'src/app/shared/enums/eGameStatus';
-import { Game } from 'src/app/shared/models/game.model';
+import { EndGameModalComponent } from '../../modals/end-game-modal/end-game-modal.component';
+import { GameService } from '../../services/game.service';
+import { TimerComponent } from '../../shared/components/timer/timer.component';
+import { eGameStatus } from '../../shared/enums/eGameStatus';
+import { Game } from '../../shared/models/game.model';
 import { reset, skipQuestion, submitQuestion } from './game.actions';
 
 @Component({

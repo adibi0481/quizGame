@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { eGameStatus } from 'src/app/shared/enums/eGameStatus';
 
 @Component({
   selector: 'app-game-status-bar',

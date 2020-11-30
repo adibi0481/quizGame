@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { take } from 'rxjs/operators';
-import { GameService } from 'src/app/services/game.service';
-import { QuestionStatistics } from 'src/app/shared/models/question-statistics.model';
+import { GameService } from '../../../services/game.service';
+import { QuestionStatistics } from '../../../shared/models/question-statistics.model';
 
 @Component({
   selector: 'app-questions-statistics',

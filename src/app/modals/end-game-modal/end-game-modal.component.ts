@@ -3,9 +3,9 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { take } from 'rxjs/operators';
 
-import { GameService } from 'src/app/services/game.service';
-import { eGameStatus } from 'src/app/shared/enums/eGameStatus';
-import { GameResults } from 'src/app/shared/models/game-results.model';
+import { GameService } from '../../services/game.service';
+import { eGameStatus } from '../../shared/enums/eGameStatus';
+import { GameResults } from '../../shared/models/game-results.model';
 
 @Component({
   selector: 'app-end-game-modal',
