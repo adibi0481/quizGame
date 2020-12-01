@@ -35,7 +35,7 @@ export class GameBoardComponent implements OnInit {
   ngOnInit() {
     this.store.dispatch(reset());
   }
-  
+
   onSubmitAnswer() {
     this.store.dispatch(submitAnswer({ answer: this.selectedAnswer }));
     this.isDisabled = true;
@@ -51,19 +51,20 @@ export class GameBoardComponent implements OnInit {
   }
 
   initNextQuestion() {
-    if (this.game.status === eGameStatus.over) {
-      this.openGameOverModal();
-    }
-    else {
-      setTimeout(() => {
-        this.selectedAnswer = null;
-        this.isTimeUp = false;
-        this.isDisabled = false;
-        this.isCorrect = null;
-        this.currentQuestionNumber++;
-        this.stepper.next();
-      }, 1500)
-    }
+    setTimeout(() => {
+      if (this.game.status === eGameStatus.over) {        
+          this.openGameOverModal();
+        }
+        else {
+          this.selectedAnswer = null;
+          this.isTimeUp = false;
+          this.isDisabled = false;
+          this.isCorrect = null;
+          this.currentQuestionNumber++;
+          this.stepper.next();
+        }
+      }
+    , 1500);
   }
 
   openGameOverModal() {
