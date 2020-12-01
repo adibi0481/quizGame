@@ -8,7 +8,7 @@ import { GameService } from '../../services/game.service';
 import { TimerComponent } from '../../shared/components/timer/timer.component';
 import { eGameStatus } from '../../shared/enums/eGameStatus';
 import { Game } from '../../shared/models/game.model';
-import { reset, skipQuestion, submitQuestion } from './game.actions';
+import { reset, skipQuestion, submitAnswer } from './game.actions';
 
 @Component({
   selector: 'app-game-board',
@@ -23,7 +23,7 @@ export class GameBoardComponent implements AfterViewInit {
   currentQuestionNumber: number = 1;
   selectedAnswer: string;
   isDisabled: boolean = false;
-  isTimesUp: boolean = false;
+  isTimeUp: boolean = false;
   isCorrect: boolean = null;
   game: Game;
 
@@ -42,7 +42,7 @@ export class GameBoardComponent implements AfterViewInit {
   }
 
   onSubmitAnswer() {
-    this.store.dispatch(submitQuestion({ answer: this.selectedAnswer }));
+    this.store.dispatch(submitAnswer({ answer: this.selectedAnswer }));
     this.isDisabled = true;
     this.isCorrect = this.game.userAnswers[this.game.questions[this.currentQuestionNumber - 1].question];
     this.initNextQuestion();
@@ -63,7 +63,7 @@ export class GameBoardComponent implements AfterViewInit {
     else {
       setTimeout(() => {
         this.selectedAnswer = null;
-        this.isTimesUp = false;
+        this.isTimeUp = false;
         this.isDisabled = false;
         this.isCorrect = null;
         this.currentQuestionNumber++;
@@ -89,7 +89,7 @@ export class GameBoardComponent implements AfterViewInit {
     });
   }
   onTimesUp() {
-    this.isTimesUp = true;
+    this.isTimeUp = true;
     this.skipQuestion();
   }
 

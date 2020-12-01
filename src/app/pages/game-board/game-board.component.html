@@ -1,4 +1,5 @@
-<app-game-status-bar [lives]="game.lives" [score]="game.totalScore" [questionNumber]="currentQuestionNumber"></app-game-status-bar>
+<app-game-status-bar [lives]="game.lives" [score]="game.totalScore" [questionNumber]="currentQuestionNumber">
+</app-game-status-bar>
 <app-timer #timer (timesUp)="onTimesUp()"></app-timer>
 <mat-horizontal-stepper [linear]="true" #stepper>
     <mat-step *ngFor="let q of game.questions;let i = index" editable="false">
@@ -8,7 +9,7 @@
         <div class="footer">
             <h2 *ngIf="isCorrect">GOOD JOB!!! Prepare for the next question...</h2>
             <h2 *ngIf="isCorrect != null && !isCorrect">WRONG!!! Prepare for the next question...</h2>
-            <h2 *ngIf="isTimesUp">TIMES UP :( Prepare for the next question...</h2>
+            <h2 *ngIf="isTimeUp">TIMES UP :( Prepare for the next question...</h2>
             <button id="okButton" (click)="onSubmitAnswer()" *ngIf="!isDisabled && selectedAnswer"
                 mat-button>OK</button>
             <div *ngIf="!isDisabled && game.skipped < 3 && game.currQuestionIdx < game.questions.length"
@@ -20,6 +21,6 @@
     </mat-step>
 </mat-horizontal-stepper>
 
-<div style="text-align: center; line-height: 10;">
-    <img style="width: 100vw;" src="/assets/gameFooter.png">
+<div style="position: absolute; bottom: 0; text-align: center; line-height: 10;">
+    <img style="bottom: 0;position: absolute;width: 100vw;" src="assets/gameFooter.png">
 </div>

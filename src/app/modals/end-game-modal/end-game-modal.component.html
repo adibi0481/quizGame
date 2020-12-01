@@ -1,6 +1,6 @@
 <div class="content-container" mat-dialog-content>
     <div class="score-container">
-        <img src="/assets/gameover.png">
+        <img src="assets/gameover.png">
         <label *ngIf="correctAnswers === totalQuestions" class="amazing">AMAZING!!!</label>
         <span id="top-title">YOU ANSWERED CORRECTLY ON:</span>
         <span [ngStyle]="{'color':correctAnswers === totalQuestions ? 'green': 'white'}" id="result">

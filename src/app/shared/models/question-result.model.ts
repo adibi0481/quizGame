@@ -1,4 +1,4 @@
 export interface QuestionResult {
-    question: string,
-    isCorrect: boolean
+    question: string;
+    isCorrect: boolean;
 }

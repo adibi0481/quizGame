@@ -4,5 +4,5 @@ export class Question {
     type: string;
     difficulty: string;
     correctAnswer: string;
-    incorrectAnswers: string[]
+    incorrectAnswers: string[];
 }

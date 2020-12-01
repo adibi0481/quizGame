@@ -2,7 +2,7 @@ import { createReducer, on } from '@ngrx/store';
 import { QUESTIONS } from '../../services/QUESTIONS';
 import { eGameStatus } from '../../shared/enums/eGameStatus';
 import { Game } from '../../shared/models/game.model';
-import { reset, skipQuestion, submitQuestion } from './game.actions';
+import { reset, skipQuestion, submitAnswer } from './game.actions';
 
 const SCORE_PER_QUESTION = 10;
 
@@ -41,7 +41,7 @@ const _gameReducer = createReducer(
 
         return newState;
     }),
-    on(submitQuestion, (state, { answer }) => {
+    on(submitAnswer, (state, { answer }) => {
         let newState = { ...state };
 
         let isAnswerCorrect = answer === state.questions[state.currQuestionIdx].correctAnswer;

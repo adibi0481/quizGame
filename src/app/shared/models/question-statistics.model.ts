@@ -1,6 +1,6 @@
 export class QuestionStatistics {
-    rightAnswers: number
-    wrongAnswers: number
+    rightAnswers: number;
+    wrongAnswers: number;
 
     constructor() {
         this.rightAnswers = 0;
