@@ -1,7 +1,7 @@
 import { EventEmitter } from '@angular/core';
 import { Component, Output } from '@angular/core';
 import { interval, Subscription } from 'rxjs';
-import { delay, take } from 'rxjs/operators';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-timer',
@@ -10,23 +10,24 @@ import { delay, take } from 'rxjs/operators';
 })
 export class TimerComponent {  
   @Output() timesUp: EventEmitter<void> = new EventEmitter<void>();
+  @Output() onTimeLeftAlert: EventEmitter<void> = new EventEmitter<void>();
+
   private timerInterval$ = interval(1000);
   private timerSubscription: Subscription;
-  timer: number;
+  timeLeft: number;
 
   constructor() { }
 
-  //init timer with time ,in seconds
-  restart(time: number){    
-    this.stop();
-    this.timer = time;
+  start(time: number, timeLeftAlert?: number){ 
+    this.timeLeft = time;
     this.timerSubscription = this.timerInterval$.pipe(take(time)).subscribe(() => {
-      this.timer--;
-      if(this.timer <= 5){
-        document.body.style.fontWeight = "bold";
+      this.timeLeft = this.timeLeft - 1;
+
+      if(timeLeftAlert && this.timeLeft === timeLeftAlert){
+        this.onTimeLeftAlert.emit();
       }
 
-      if (this.timer == 0) {
+      if (this.timeLeft == 0) {
         this.timesUp.emit();
       }
     });
@@ -34,9 +35,11 @@ export class TimerComponent {
   
   stop(){
     if (this.timerSubscription) {
-      document.body.style.fontWeight = "initial";
       this.timerSubscription.unsubscribe();
     }
   }
 
+  ngOnDestroy() {
+    this.stop();
+  }
 }

@@ -1,11 +1,9 @@
-import { AfterViewInit, ChangeDetectorRef, Component, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatStepper } from '@angular/material/stepper';
 import { Store } from '@ngrx/store';
-
 import { EndGameModalComponent } from '../../modals/end-game-modal/end-game-modal.component';
 import { GameService } from '../../services/game.service';
-import { TimerComponent } from '../../shared/components/timer/timer.component';
 import { eGameStatus } from '../../shared/enums/eGameStatus';
 import { Game } from '../../shared/models/game.model';
 import { reset, skipQuestion, submitAnswer } from './game.actions';
@@ -15,17 +13,16 @@ import { reset, skipQuestion, submitAnswer } from './game.actions';
   templateUrl: './game-board.component.html',
   styleUrls: ['./game-board.component.scss']
 })
-export class GameBoardComponent implements AfterViewInit {
-  readonly TIME_PER_QUESTION = 200000;
-  
+export class GameBoardComponent implements OnInit {
+
   @ViewChild('stepper') stepper: MatStepper;
-  @ViewChild('timer') timer: TimerComponent;
   currentQuestionNumber: number = 1;
   selectedAnswer: string;
   isDisabled: boolean = false;
   isTimeUp: boolean = false;
   isCorrect: boolean = null;
   game: Game;
+  selectedIndex: number = 0;
 
   constructor(private cd: ChangeDetectorRef, public gameService: GameService,
     public dialog: MatDialog,
@@ -35,12 +32,10 @@ export class GameBoardComponent implements AfterViewInit {
     });
   }
 
-  ngAfterViewInit(): void {
+  ngOnInit() {
     this.store.dispatch(reset());
-    this.timer.restart(this.TIME_PER_QUESTION);
-    this.cd.detectChanges();
   }
-
+  
   onSubmitAnswer() {
     this.store.dispatch(submitAnswer({ answer: this.selectedAnswer }));
     this.isDisabled = true;
@@ -58,7 +53,6 @@ export class GameBoardComponent implements AfterViewInit {
   initNextQuestion() {
     if (this.game.status === eGameStatus.over) {
       this.openGameOverModal();
-      this.timer.stop();
     }
     else {
       setTimeout(() => {
@@ -68,10 +62,10 @@ export class GameBoardComponent implements AfterViewInit {
         this.isCorrect = null;
         this.currentQuestionNumber++;
         this.stepper.next();
-        this.timer.restart(this.TIME_PER_QUESTION);
       }, 1500)
     }
   }
+
   openGameOverModal() {
     this.dialog.open(EndGameModalComponent, {
       disableClose: true,
@@ -79,7 +73,6 @@ export class GameBoardComponent implements AfterViewInit {
       maxHeight: '100vh',
       height: '100%',
       width: '100%',
-      hasBackdrop: false,
       data: {
         answers: this.game.userAnswers,
         status: this.game.status,
@@ -88,10 +81,10 @@ export class GameBoardComponent implements AfterViewInit {
       }
     });
   }
+
   onTimesUp() {
     this.isTimeUp = true;
     this.skipQuestion();
   }
-
 }
 
