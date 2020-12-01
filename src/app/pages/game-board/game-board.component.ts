@@ -16,13 +16,12 @@ import { reset, skipQuestion, submitAnswer } from './game.actions';
 export class GameBoardComponent implements OnInit {
 
   @ViewChild('stepper') stepper: MatStepper;
+  game: Game;
   currentQuestionNumber: number = 1;
+  stepIndex: number = 0;
   selectedAnswer: string;
   isDisabled: boolean = false;
-  isTimeUp: boolean = false;
   isCorrect: boolean = null;
-  game: Game;
-  selectedIndex: number = 0;
 
   constructor(private cd: ChangeDetectorRef, public gameService: GameService,
     public dialog: MatDialog,
@@ -57,7 +56,6 @@ export class GameBoardComponent implements OnInit {
         }
         else {
           this.selectedAnswer = null;
-          this.isTimeUp = false;
           this.isDisabled = false;
           this.isCorrect = null;
           this.currentQuestionNumber++;
@@ -84,7 +82,6 @@ export class GameBoardComponent implements OnInit {
   }
 
   onTimesUp() {
-    this.isTimeUp = true;
     this.skipQuestion();
   }
 }

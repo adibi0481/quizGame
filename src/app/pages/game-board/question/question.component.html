@@ -22,4 +22,9 @@
             {{option}}
         </button>
     </div>
+    <div class="answer-result" *ngIf="isFinished && selectedAnswer">
+        <h2 *ngIf="selectedAnswer === question.correctAnswer">GOOD JOB!!! Prepare for the next question...</h2>
+        <h2 *ngIf="selectedAnswer !== question.correctAnswer">WRONG!!! Prepare for the next question...</h2>
+        <h2 *ngIf="isTimeUp">TIMES UP :( Prepare for the next question...</h2>
+    </div>
 </div>

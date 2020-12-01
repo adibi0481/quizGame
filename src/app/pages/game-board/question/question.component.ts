@@ -25,6 +25,7 @@ export class QuestionComponent implements OnInit, AfterViewInit, OnDestroy {
 
   answers: string[] = [];
   isCorrectAnswer: boolean;
+  isTimeUp: boolean;
 
   constructor(private cd: ChangeDetectorRef) { }
 
@@ -34,7 +35,10 @@ export class QuestionComponent implements OnInit, AfterViewInit, OnDestroy {
   
   ngAfterViewInit() {
     this.timer.timesUp.pipe(take(1)).subscribe(() => this.timesUp.emit());
-    this.timer.timeLeftAlert.pipe(take(1)).subscribe(() => this.onTimeAlert());
+    this.timer.timeLeftAlert.pipe(take(1)).subscribe(() => {
+      this.isTimeUp = true;
+      this.onTimeAlert()
+    });
     this.timer.start(this.TIME_PER_QUESTION, this.TIME_LEFT_ALERT);
     this.cd.detectChanges();
   }

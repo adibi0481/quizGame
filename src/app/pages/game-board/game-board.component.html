@@ -1,25 +1,22 @@
 <app-game-status-bar [lives]="game.lives" [score]="game.totalScore" [questionNumber]="currentQuestionNumber">
 </app-game-status-bar>
-<mat-horizontal-stepper [selectedIndex]="selectedIndex" (selectionChange)="selectedIndex = selectedIndex + 1" class="stepper"
+<mat-horizontal-stepper [selectedIndex]="stepIndex" (selectionChange)="stepIndex = stepIndex + 1" class="stepper"
     [linear]="true" #stepper>
-        <mat-step  *ngFor="let q of game.questions;let i = index"  editable="false">
-            <ng-template matStepLabel></ng-template>
-            <app-question (timesUp)="onTimesUp()" *ngIf="selectedIndex === i" #question [questionNumber]="currentQuestionNumber" [(selectedAnswer)]="selectedAnswer"
-                [isFinished]="isDisabled" [question]="q">
-            </app-question>
-            <div class="footer">
-                <h2 *ngIf="isCorrect">GOOD JOB!!! Prepare for the next question...</h2>
-                <h2 *ngIf="isCorrect != null && !isCorrect">WRONG!!! Prepare for the next question...</h2>
-                <h2 *ngIf="isTimeUp">TIMES UP :( Prepare for the next question...</h2>
-                <button id="okButton" (click)="onSubmitAnswer()" *ngIf="!isDisabled && selectedAnswer"
-                    mat-button>OK</button>
-                <div *ngIf="!isDisabled && game.skipped < 3 && game.currQuestionIdx < game.questions.length"
-                    class="skip-button">
-                    <button (click)="skipQuestion()" mat-button>Skip</button>
-                    {{3 - game.skipped + ' Remaining'}}
-                </div>
+    <mat-step *ngFor="let q of game.questions;let i = index" editable="false">
+        <ng-template matStepLabel></ng-template>
+        <app-question (timesUp)="onTimesUp()" *ngIf="stepIndex === i" #question [questionNumber]="currentQuestionNumber"
+            [(selectedAnswer)]="selectedAnswer" [isFinished]="isDisabled" [question]="q">
+        </app-question>
+        <div class="footer">
+            <button id="okButton" (click)="onSubmitAnswer()" *ngIf="!isDisabled && selectedAnswer"
+                mat-button>OK</button>
+            <div *ngIf="!isDisabled && game.skipped < 3 && game.currQuestionIdx < game.questions.length"
+                class="skip-button">
+                <button (click)="skipQuestion()" mat-button>Skip</button>
+                {{3 - game.skipped + ' Remaining'}}
             </div>
-        </mat-step>
+        </div>
+    </mat-step>
 </mat-horizontal-stepper>
 
 <div style="position: absolute; bottom: 0; text-align: center; line-height: 10;">
