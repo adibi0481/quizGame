@@ -34,7 +34,7 @@ export class QuestionComponent implements OnInit, AfterViewInit, OnDestroy {
   
   ngAfterViewInit() {
     this.timer.timesUp.pipe(take(1)).subscribe(() => this.timesUp.emit());
-    this.timer.onTimeLeftAlert.pipe(take(1)).subscribe(() => this.onTimeAlert());
+    this.timer.timeLeftAlert.pipe(take(1)).subscribe(() => this.onTimeAlert());
     this.timer.start(this.TIME_PER_QUESTION, this.TIME_LEFT_ALERT);
     this.cd.detectChanges();
   }

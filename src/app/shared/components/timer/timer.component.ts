@@ -10,7 +10,7 @@ import { take } from 'rxjs/operators';
 })
 export class TimerComponent {  
   @Output() timesUp: EventEmitter<void> = new EventEmitter<void>();
-  @Output() onTimeLeftAlert: EventEmitter<void> = new EventEmitter<void>();
+  @Output() timeLeftAlert: EventEmitter<void> = new EventEmitter<void>();
 
   private timerInterval$ = interval(1000);
   private timerSubscription: Subscription;
@@ -24,7 +24,7 @@ export class TimerComponent {
       this.timeLeft = this.timeLeft - 1;
 
       if(timeLeftAlert && this.timeLeft === timeLeftAlert){
-        this.onTimeLeftAlert.emit();
+        this.timeLeftAlert.emit();
       }
 
       if (this.timeLeft == 0) {
