@@ -15,7 +15,8 @@ import { SharedModule } from '../../shared/shared.module';
                   QuestionComponent,
                 EndGameModalComponent],
     imports: [SharedModule,CommonModule,FormsModule,StoreModule.forRoot({ game: gameReducer })],
-    exports: [GameBoardComponent]        
+    exports: [GameBoardComponent],
+    entryComponents:[EndGameModalComponent]
 })
 
 export class GameBoardModule { }
