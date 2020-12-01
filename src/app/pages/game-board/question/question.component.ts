@@ -1,7 +1,7 @@
 import { AfterViewInit, ChangeDetectorRef, Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
 import { Question } from '../../../shared/models/question.model';
 import * as _ from "lodash";
-import { TimerComponent } from 'src/app/shared/components/timer/timer.component';
+import { TimerComponent } from '../../../shared/components/timer/timer.component';
 import { take } from 'rxjs/operators';
 
 @Component({
