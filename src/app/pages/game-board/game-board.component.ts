@@ -16,7 +16,7 @@ import { reset, skipQuestion, submitAnswer } from './game.actions';
   styleUrls: ['./game-board.component.scss']
 })
 export class GameBoardComponent implements AfterViewInit {
-  readonly TIME_PER_QUESTION = 20;
+  readonly TIME_PER_QUESTION = 200000;
   
   @ViewChild('stepper') stepper: MatStepper;
   @ViewChild('timer') timer: TimerComponent;
@@ -57,8 +57,8 @@ export class GameBoardComponent implements AfterViewInit {
 
   initNextQuestion() {
     if (this.game.status === eGameStatus.over) {
-      this.timer.stop();
       this.openGameOverModal();
+      this.timer.stop();
     }
     else {
       setTimeout(() => {

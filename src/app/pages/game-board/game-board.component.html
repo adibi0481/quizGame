@@ -1,7 +1,6 @@
 <app-game-status-bar [lives]="game.lives" [score]="game.totalScore" [questionNumber]="currentQuestionNumber">
 </app-game-status-bar>
-<app-timer #timer (timesUp)="onTimesUp()"></app-timer>
-<mat-horizontal-stepper [linear]="true" #stepper>
+<mat-horizontal-stepper class="stepper" [linear]="true" #stepper>
     <mat-step *ngFor="let q of game.questions;let i = index" editable="false">
         <ng-template matStepLabel></ng-template>
         <app-question [questionNumber]="currentQuestionNumber" [(selectedAnswer)]="selectedAnswer"

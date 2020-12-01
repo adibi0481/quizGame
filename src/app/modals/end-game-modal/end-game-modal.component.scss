@@ -57,6 +57,9 @@
             display: flex;            
             width: 70%;
             mat-form-field{
+                &::ng-deep .mat-form-field-wrapper {
+                    padding-bottom: 0;
+                }
                 width: 70%;
                 input{            
                     display: block;
@@ -74,7 +77,6 @@
             background-color: #464141;
             color: black;
             width: 30%;
-            height: 70px;
             font-weight: bold;
             font-size: 1.5vw;
             border-radius: 13px;
@@ -88,6 +90,10 @@
             border: none;
         }         
     }
+
+    // ::ng-deep .mat-form-field-wrapper {
+    //     padding-bottom: 0;
+    // }
 }
 .error{
     text-align: left;
@@ -95,4 +101,4 @@
     font-weight: 500;
     font-size: 1.5vw;
     color: rgb(149, 88, 88);
-}   
+}

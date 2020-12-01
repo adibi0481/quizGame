@@ -1,7 +1,15 @@
 mat-horizontal-stepper{
     width: 50%;
     margin: auto;
-    line-height: 8;
+    @media (max-width: 1092px) {
+        width: 60%
+    }
+    @media (max-width: 768px) {
+        width: 80%
+    }
+    @media (max-width: 542px) {
+        width: 100%
+    }
 }
 
 .footer{
@@ -22,6 +30,7 @@ mat-horizontal-stepper{
         float: right;
         line-height: 2;
         margin-top: 4%;
+        font-size: 1vw;
         button{
             background-color: transparent;
             color: #3f7d94;

@@ -1,11 +1,11 @@
-<div class="timer-container">
-    <label>Time:
-        <label [ngStyle]="{'color': timer > 0 ? '#61B3BB' : '#DD1010'}" class="timer" >
-            <img *ngIf="timer > 0; else warningTimer" src="https://github.com/adibi0481/quizGame/blob/master/src/assets/hourglass.png?raw=true">
-            <ng-template #warningTimer>
-                <img src="https://github.com/adibi0481/quizGame/blob/master/src/assets/redHourglass.png?raw=true">
-            </ng-template>
-            {{timer}} SECONDS
-        </label>
-    </label>
-</div>
+<span class="timer-container">
+    <span class="timer-text time">Time:</span>
+    <span [ngStyle]="{'color': timer > 0 ? '#61B3BB' : '#DD1010'}" class="timer-image">
+        <img *ngIf="timer > 0; else warningTimer"
+            src="https://github.com/adibi0481/quizGame/blob/master/src/assets/hourglass.png?raw=true">
+        <ng-template #warningTimer>
+            <img src="https://github.com/adibi0481/quizGame/blob/master/src/assets/redHourglass.png?raw=true">
+        </ng-template>
+    </span>
+    <span class="timer-text seconds">{{timer}} SECONDS</span>
+</span>
