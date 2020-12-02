@@ -31,12 +31,15 @@ export class QuestionComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnInit(): void {
     this.answers = _.shuffle([...this.question.incorrectAnswers, this.question.correctAnswer]);
+    this.isTimeUp = false;
   }
   
   ngAfterViewInit() {
-    this.timer.timesUp.pipe(take(1)).subscribe(() => this.timesUp.emit());
-    this.timer.timeLeftAlert.pipe(take(1)).subscribe(() => {
+    this.timer.timesUp.pipe(take(1)).subscribe(() => {
       this.isTimeUp = true;
+      this.timesUp.emit();
+    });
+    this.timer.timeLeftAlert.pipe(take(1)).subscribe(() => {      
       this.onTimeAlert()
     });
     this.timer.start(this.TIME_PER_QUESTION, this.TIME_LEFT_ALERT);

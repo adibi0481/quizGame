@@ -7,6 +7,7 @@ import { GameService } from '../../services/game.service';
 import { eGameStatus } from '../../shared/enums/eGameStatus';
 import { Game } from '../../shared/models/game.model';
 import { reset, skipQuestion, submitAnswer } from './game.actions';
+import { QuestionComponent } from './question/question.component';
 
 @Component({
   selector: 'app-game-board',
@@ -16,6 +17,7 @@ import { reset, skipQuestion, submitAnswer } from './game.actions';
 export class GameBoardComponent implements OnInit {
 
   @ViewChild('stepper') stepper: MatStepper;
+  @ViewChild('question') question: QuestionComponent;
   game: Game;
   currentQuestionNumber: number = 1;
   stepIndex: number = 0;
@@ -36,6 +38,7 @@ export class GameBoardComponent implements OnInit {
   }
 
   onSubmitAnswer() {
+    this.question.timer.stop();
     this.store.dispatch(submitAnswer({ answer: this.selectedAnswer }));
     this.isDisabled = true;
     this.isCorrect = this.game.userAnswers[this.game.questions[this.currentQuestionNumber - 1].question];
@@ -43,6 +46,7 @@ export class GameBoardComponent implements OnInit {
   }
 
   skipQuestion() {
+    this.question.timer.stop();        
     this.selectedAnswer = null;
     this.store.dispatch(skipQuestion());
     this.isDisabled = true;
@@ -51,7 +55,7 @@ export class GameBoardComponent implements OnInit {
 
   initNextQuestion() {
     setTimeout(() => {
-      if (this.game.status === eGameStatus.over) {        
+      if (this.game.status === eGameStatus.over) {
           this.openGameOverModal();
         }
         else {
