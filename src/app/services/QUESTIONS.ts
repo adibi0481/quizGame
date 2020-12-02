@@ -44,7 +44,7 @@ import { Question } from '../shared/models/question.model';
             "question": "What is the name of one of the Neo-Aramaic languages spoken by the Jewish population from Northwestern Iraq?",
             "correctAnswer": "Lishana Deni",
             "incorrectAnswers": [
-                "Hulaul&aacute;",
+                "Hulaula",
                 "Lishan Didan",
                 "Chaldean Neo-Aramaic"
             ]
@@ -89,7 +89,7 @@ import { Question } from '../shared/models/question.model';
             "category": "Art",
             "type": "multiple",
             "difficulty": "easy",
-            "question": "Which Van Gogh painting depicts the view from his asylum in Saint-R&eacute;my-de-Provence in southern France?",
+            "question": "Which Van Gogh painting depicts the view from his asylum in Saint-Remy-de-Provence in southern France?",
             "correctAnswer": "The Starry Night",
             "incorrectAnswers": [
                 "Wheatfields with Crows",
